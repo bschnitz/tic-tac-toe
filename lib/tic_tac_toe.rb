@@ -12,7 +12,7 @@ class TicTacToe
 
   def game_loop
     player_number = 0
-    until check_for_winner
+    until win? || draw?
       puts
       @board_printer.print
       puts "\nPlayer #{@board.get_player(player_number)} make your move!"
@@ -23,7 +23,14 @@ class TicTacToe
 
   private
 
-  def check_for_winner
+  def draw?
+    return unless @board.possible_moves.empty?
+
+    puts 'No more moves left, it\'s a draw.'
+    true
+  end
+
+  def win?
     winner = @board.check_for_winner
     if winner
       puts
