@@ -2,7 +2,7 @@
 
 # Logic for the Tic Tac Toe Board
 class Board
-  attr_reader :rows, :symbols
+  attr_reader :rows, :symbols, :last_move_at
 
   def initialize
     @rows = [
@@ -50,6 +50,8 @@ class Board
   end
 
   def possible_move?(character)
+    return false unless character.to_i.to_s == character
+
     possible_moves.include?(character.to_i)
   end
 

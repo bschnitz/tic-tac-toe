@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'board'
+
 # Prints the TicTacToe Board inside the terminal
 class BoardPrinter
-  def initialize(board)
+  def initialize(board = Board.new)
     @board = board
   end
 

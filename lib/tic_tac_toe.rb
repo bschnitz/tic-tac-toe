@@ -5,9 +5,9 @@ require_relative './board_printer'
 
 # Tic Tac Toe game loop
 class TicTacToe
-  def initialize
-    @board = Board.new
-    @board_printer = BoardPrinter.new(@board)
+  def initialize(board = Board.new, board_printer = BoardPrinter.new(board))
+    @board = board
+    @board_printer = board_printer
   end
 
   def game_loop
@@ -21,10 +21,8 @@ class TicTacToe
     end
   end
 
-  private
-
   def draw?
-    return unless @board.possible_moves.empty?
+    return false unless @board.possible_moves.empty?
 
     puts 'No more moves left, it\'s a draw.'
     true
